@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище OnlineShoppingDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="IdClient" />
+    </Key>
+    <Property Name="IdClient" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="15" />
+    <Property Name="Password" Type="nchar" MaxLength="15" />
+    <Property Name="Name" Type="nchar" MaxLength="25" />
+    <Property Name="Surname" Type="nchar" MaxLength="30" />
+    <Property Name="Phone" Type="nchar" MaxLength="10" />
+    <Property Name="Email" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+    </Key>
+    <Property Name="IdOrder" Type="int" Nullable="false" />
+    <Property Name="IdWorker" Type="int" Nullable="false" />
+    <Property Name="IdShipping" Type="int" Nullable="false" />
+    <Property Name="TimeSend" Type="date" />
+    <Property Name="TimeObtain" Type="date" />
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="IdProduct" Type="int" Nullable="false" />
+    <Property Name="IdPayment" Type="int" Nullable="false" />
+    <Property Name="IdClient" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "C:\USERS\LIZA\DESKTOP\KPI\5SEM\SOFTWAREDEVELOPMENTTHEORY-2_LABS\ONLINE-SHOPPING\APP_DATA\DATABASE1.MDF.dbo.Order_Product" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Order_Product">
+    <Key>
+      <PropertyRef Name="IdOrder" />
+      <PropertyRef Name="IdProduct" />
+    </Key>
+    <Property Name="IdOrder" Type="int" Nullable="false" />
+    <Property Name="IdProduct" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order_Status">
+    <Key>
+      <PropertyRef Name="IdStatus" />
+    </Key>
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="IdPayment" />
+    </Key>
+    <Property Name="IdPayment" Type="int" Nullable="false" />
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="IdType" Type="int" Nullable="false" />
+    <Property Name="Summa" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment_Status">
+    <Key>
+      <PropertyRef Name="IdStatus" />
+    </Key>
+    <Property Name="IdStatus" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment_Type">
+    <Key>
+      <PropertyRef Name="IdType" />
+    </Key>
+    <Property Name="IdType" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Position">
+    <Key>
+      <PropertyRef Name="IdPosition" />
+    </Key>
+    <Property Name="IdPosition" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="IdProduct" />
+    </Key>
+    <Property Name="IdProduct" Type="int" Nullable="false" />
+    <Property Name="IdOrder" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="Description" Type="text" />
+    <Property Name="IdStorage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product_Category">
+    <Key>
+      <PropertyRef Name="IdCategory" />
+    </Key>
+    <Property Name="IdCategory" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shipping">
+    <Key>
+      <PropertyRef Name="IdShipping" />
+    </Key>
+    <Property Name="IdShipping" Type="int" Nullable="false" />
+    <Property Name="Country" Type="nchar" MaxLength="25" Nullable="false" />
+    <Property Name="City" Type="nchar" MaxLength="25" Nullable="false" />
+    <Property Name="Street" Type="nchar" MaxLength="30" />
+    <Property Name="StreetNumber" Type="int" />
+    <Property Name="Appartement" Type="nchar" MaxLength="10" />
+    <Property Name="Index" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Storage">
+    <Key>
+      <PropertyRef Name="IdStorage" />
+    </Key>
+    <Property Name="IdStorage" Type="int" Nullable="false" />
+    <Property Name="IdProduct" Type="int" Nullable="false" />
+    <Property Name="IdWorker" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "C:\USERS\LIZA\DESKTOP\KPI\5SEM\SOFTWAREDEVELOPMENTTHEORY-2_LABS\ONLINE-SHOPPING\APP_DATA\DATABASE1.MDF.dbo.Storage_Product" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="Storage_Product">
+    <Key>
+      <PropertyRef Name="IdStorage" />
+      <PropertyRef Name="IdProduct" />
+    </Key>
+    <Property Name="IdStorage" Type="int" Nullable="false" />
+    <Property Name="IdProduct" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="IdWorker" />
+    </Key>
+    <Property Name="IdWorker" Type="int" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Password" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="25" />
+    <Property Name="Surname" Type="nchar" MaxLength="25" />
+    <Property Name="IdPosition" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Order__IdClient__5AEE82B9">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="IdClient" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__IdPayment__4AB81AF0">
+    <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment">
+        <PropertyRef Name="IdPayment" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IdPayment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__IdShippin__48CFD27E">
+    <End Role="Shipping" Type="Self.Shipping" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shipping">
+        <PropertyRef Name="IdShipping" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IdShipping" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__IdStatus__49C3F6B7">
+    <End Role="Order_Status" Type="Self.Order_Status" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order_Status">
+        <PropertyRef Name="IdStatus" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__IdWorker__47DBAE45">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="IdWorker" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IdWorker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order_Pro__IdOrd__33D4B598">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="IdOrder" />
+      </Principal>
+      <Dependent Role="Order_Product">
+        <PropertyRef Name="IdOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order_Pro__IdPro__34C8D9D1">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="IdProduct" />
+      </Principal>
+      <Dependent Role="Order_Product">
+        <PropertyRef Name="IdProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__IdStatu__29572725">
+    <End Role="Payment_Status" Type="Self.Payment_Status" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment_Status">
+        <PropertyRef Name="IdStatus" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Payment__IdType__2A4B4B5E">
+    <End Role="Payment_Type" Type="Self.Payment_Type" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payment_Type">
+        <PropertyRef Name="IdType" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="IdType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__IdCateg__4BAC3F29">
+    <End Role="Product_Category" Type="Self.Product_Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product_Category">
+        <PropertyRef Name="IdCategory" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IdCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Storage__IdWorke__4CA06362">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="Storage" Type="Self.Storage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="IdWorker" />
+      </Principal>
+      <Dependent Role="Storage">
+        <PropertyRef Name="IdWorker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Storage_P__IdPro__3C69FB99">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Storage_Product" Type="Self.Storage_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="IdProduct" />
+      </Principal>
+      <Dependent Role="Storage_Product">
+        <PropertyRef Name="IdProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Storage_P__IdSto__398D8EEE">
+    <End Role="Storage" Type="Self.Storage" Multiplicity="1" />
+    <End Role="Storage_Product" Type="Self.Storage_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Storage">
+        <PropertyRef Name="IdStorage" />
+      </Principal>
+      <Dependent Role="Storage_Product">
+        <PropertyRef Name="IdStorage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Worker__IdPositi__4316F928">
+    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Position">
+        <PropertyRef Name="IdPosition" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="IdPosition" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище OnlineShoppingDBModelContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_Status" EntityType="Self.Order_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment_Status" EntityType="Self.Payment_Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment_Type" EntityType="Self.Payment_Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product_Category" EntityType="Self.Product_Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shipping" EntityType="Self.Shipping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Storage" EntityType="Self.Storage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order_Product" EntityType="Self.Order_Product" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Order_Product].[IdOrder] AS [IdOrder], 
+    [Order_Product].[IdProduct] AS [IdProduct]
+    FROM [dbo].[Order_Product] AS [Order_Product]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Storage_Product" EntityType="Self.Storage_Product" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Storage_Product].[IdStorage] AS [IdStorage], 
+    [Storage_Product].[IdProduct] AS [IdProduct]
+    FROM [dbo].[Storage_Product] AS [Storage_Product]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Order__IdClient__5AEE82B9" Association="Self.FK__Order__IdClient__5AEE82B9">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__IdPayment__4AB81AF0" Association="Self.FK__Order__IdPayment__4AB81AF0">
+      <End Role="Payment" EntitySet="Payment" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__IdShippin__48CFD27E" Association="Self.FK__Order__IdShippin__48CFD27E">
+      <End Role="Shipping" EntitySet="Shipping" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__IdStatus__49C3F6B7" Association="Self.FK__Order__IdStatus__49C3F6B7">
+      <End Role="Order_Status" EntitySet="Order_Status" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__IdWorker__47DBAE45" Association="Self.FK__Order__IdWorker__47DBAE45">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order_Pro__IdOrd__33D4B598" Association="Self.FK__Order_Pro__IdOrd__33D4B598">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="Order_Product" EntitySet="Order_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order_Pro__IdPro__34C8D9D1" Association="Self.FK__Order_Pro__IdPro__34C8D9D1">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Order_Product" EntitySet="Order_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__IdStatu__29572725" Association="Self.FK__Payment__IdStatu__29572725">
+      <End Role="Payment_Status" EntitySet="Payment_Status" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Payment__IdType__2A4B4B5E" Association="Self.FK__Payment__IdType__2A4B4B5E">
+      <End Role="Payment_Type" EntitySet="Payment_Type" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__IdCateg__4BAC3F29" Association="Self.FK__Product__IdCateg__4BAC3F29">
+      <End Role="Product_Category" EntitySet="Product_Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Storage__IdWorke__4CA06362" Association="Self.FK__Storage__IdWorke__4CA06362">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Storage" EntitySet="Storage" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Storage_P__IdPro__3C69FB99" Association="Self.FK__Storage_P__IdPro__3C69FB99">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Storage_Product" EntitySet="Storage_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Storage_P__IdSto__398D8EEE" Association="Self.FK__Storage_P__IdSto__398D8EEE">
+      <End Role="Storage" EntitySet="Storage" />
+      <End Role="Storage_Product" EntitySet="Storage_Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Worker__IdPositi__4316F928" Association="Self.FK__Worker__IdPositi__4316F928">
+      <End Role="Position" EntitySet="Position" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
