@@ -26,7 +26,7 @@ namespace online_shopping.Models
         public string Street { get; set; }
         public Nullable<int> StreetNumber { get; set; }
         public string Appartement { get; set; }
-        public int Index { get; set; }
+        public int ShippingIndex { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

@@ -31,9 +31,9 @@ namespace online_shopping.Models
         public int IdClient { get; set; }
     
         public virtual Client Client { get; set; }
+        public virtual Order_Status Order_Status { get; set; }
         public virtual Payment Payment { get; set; }
         public virtual Shipping Shipping { get; set; }
-        public virtual Order_Status Order_Status { get; set; }
         public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

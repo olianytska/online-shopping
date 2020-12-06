@@ -13,10 +13,10 @@ namespace online_shopping.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class OnineShoppingEntities : DbContext
+    public partial class OnlineShoppingEntities : DbContext
     {
-        public OnineShoppingEntities()
-            : base("name=OnineShoppingEntities")
+        public OnlineShoppingEntities()
+            : base("name=OnlineShoppingEntities")
         {
         }
     
@@ -26,8 +26,9 @@ namespace online_shopping.Models
         }
     
         public virtual DbSet<Client> Clients { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<ContactU> ContactUs { get; set; }
         public virtual DbSet<Order_Status> Order_Status { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Payment_Status> Payment_Status { get; set; }
         public virtual DbSet<Payment_Type> Payment_Type { get; set; }

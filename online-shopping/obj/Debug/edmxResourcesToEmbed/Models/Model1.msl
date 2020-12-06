@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище OnlineShoppingDBModelContainer" CdmEntityContainer="OnineShoppingEntities">
+  <EntityContainerMapping StorageEntityContainer="Хранилище OnlineShoppingModelContainer" CdmEntityContainer="OnlineShoppingEntities">
     <EntitySetMapping Name="Clients">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Client">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Client">
         <MappingFragment StoreEntitySet="Client">
           <ScalarProperty Name="IdClient" ColumnName="IdClient" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ClientLogin" ColumnName="ClientLogin" />
+          <ScalarProperty Name="ClientPassword" ColumnName="ClientPassword" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
@@ -14,9 +14,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ContactUs">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.ContactU">
+        <MappingFragment StoreEntitySet="ContactUs">
+          <ScalarProperty Name="IdContact" ColumnName="IdContact" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order_Status">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Order_Status">
+        <MappingFragment StoreEntitySet="Order_Status">
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Order">
-        <MappingFragment StoreEntitySet="Order">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
           <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
           <ScalarProperty Name="IdShipping" ColumnName="IdShipping" />
@@ -29,16 +48,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Order_Status">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Order_Status">
-        <MappingFragment StoreEntitySet="Order_Status">
-          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Payments">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Payment">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Payment">
         <MappingFragment StoreEntitySet="Payment">
           <ScalarProperty Name="IdPayment" ColumnName="IdPayment" />
           <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
@@ -48,7 +59,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Payment_Status">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Payment_Status">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Payment_Status">
         <MappingFragment StoreEntitySet="Payment_Status">
           <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -56,7 +67,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Payment_Type">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Payment_Type">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Payment_Type">
         <MappingFragment StoreEntitySet="Payment_Type">
           <ScalarProperty Name="IdType" ColumnName="IdType" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -64,7 +75,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Positions">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Position">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Position">
         <MappingFragment StoreEntitySet="Position">
           <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -72,20 +83,20 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Product">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Product">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
           <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
           <ScalarProperty Name="IdStorage" ColumnName="IdStorage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product_Category">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Product_Category">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Product_Category">
         <MappingFragment StoreEntitySet="Product_Category">
           <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -93,7 +104,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Shippings">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Shipping">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Shipping">
         <MappingFragment StoreEntitySet="Shipping">
           <ScalarProperty Name="IdShipping" ColumnName="IdShipping" />
           <ScalarProperty Name="Country" ColumnName="Country" />
@@ -101,12 +112,12 @@
           <ScalarProperty Name="Street" ColumnName="Street" />
           <ScalarProperty Name="StreetNumber" ColumnName="StreetNumber" />
           <ScalarProperty Name="Appartement" ColumnName="Appartement" />
-          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="ShippingIndex" ColumnName="ShippingIndex" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Storages">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Storage">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Storage">
         <MappingFragment StoreEntitySet="Storage">
           <ScalarProperty Name="IdStorage" ColumnName="IdStorage" />
           <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
@@ -116,26 +127,26 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Workers">
-      <EntityTypeMapping TypeName="OnlineShoppingDBModel.Worker">
+      <EntityTypeMapping TypeName="OnlineShoppingModel.Worker">
         <MappingFragment StoreEntitySet="Worker">
           <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="WorkerLogin" ColumnName="WorkerLogin" />
+          <ScalarProperty Name="WorkerPassword" ColumnName="WorkerPassword" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="IdPosition" ColumnName="IdPosition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="Order_Product" TypeName="OnlineShoppingDBModel.Order_Product" StoreEntitySet="Order_Product">
-      <EndProperty Name="Order">
+    <AssociationSetMapping Name="Order_Product" TypeName="OnlineShoppingModel.Order_Product" StoreEntitySet="Order_Product">
+      <EndProperty Name="Orders">
         <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
       </EndProperty>
       <EndProperty Name="Product">
         <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="Storage_Product" TypeName="OnlineShoppingDBModel.Storage_Product" StoreEntitySet="Storage_Product">
+    <AssociationSetMapping Name="Storage_Product" TypeName="OnlineShoppingModel.Storage_Product" StoreEntitySet="Storage_Product">
       <EndProperty Name="Product">
         <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
       </EndProperty>

@@ -22,8 +22,8 @@ namespace online_shopping.Models
         }
     
         public int IdWorker { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public string WorkerLogin { get; set; }
+        public string WorkerPassword { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public int IdPosition { get; set; }
