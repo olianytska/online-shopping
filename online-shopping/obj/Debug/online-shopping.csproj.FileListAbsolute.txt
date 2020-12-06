@@ -184,3 +184,4 @@ C:\Users\Liza\Desktop\KPI\5sem\online-shopping\online-shopping\obj\Debug\online-
 C:\Users\Liza\Desktop\KPI\5sem\online-shopping\online-shopping\obj\Debug\online-shopping.dll
 C:\Users\Liza\Desktop\KPI\5sem\online-shopping\online-shopping\obj\Debug\online-shopping.pdb
 C:\Users\Liza\Desktop\KPI\5sem\online-shopping\online-shopping\bin\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Liza\Desktop\KPI\5sem\online-shopping\online-shopping\obj\Debug\online-shopping.csprojAssemblyReference.cache
