@@ -28,11 +28,14 @@ namespace online_shopping.Models
         public int IdCategory { get; set; }
         public string ProductDescription { get; set; }
         public int IdStorage { get; set; }
-    
+        public string Photo { get; set; }
+
         public virtual Product_Category Product_Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Storage> Storages { get; set; }
+
+
     }
 }

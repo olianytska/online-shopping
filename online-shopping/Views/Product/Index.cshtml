@@ -1,0 +1,169 @@
+﻿@{
+    Layout = null;
+}
+@using online_shopping.Models
+
+<!DOCTYPE html>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .info:empty {
+        background: black;
+        height: 40px;
+    }
+
+    .list {
+        position: relative;
+        height: 200px;
+        width: 100%;
+    }
+
+        .list::before {
+            content: "";
+            background-image: url('https://secretmag.ru/imgs/2017/09/17/22/1381080/dde97d6bb8e046218d545671b8aedb28caf0d2dc.jpg');
+            background-size: cover;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            opacity: 0.1;
+        }
+
+    .text {
+        position: relative;
+        color: black;
+        line-height: 0.9;
+        text-align: center;
+    }
+
+    .new_text {
+        text-shadow: 1px 1px 2px grey;
+        text-align: center;
+        font-size: 250%;
+    }
+
+    input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+    }
+
+    input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        border: 10px dashed black;
+        margin: 10px;
+        padding: 6px;
+    }
+
+    .column {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FirstPage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Parfum.LO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search your fragrance" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Default/Index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Why Parfum.LO?</a>
+                </li>
+                <li class="nav-item active">
+                    <!--  <a class="nav-link" href="#">Catalog</a> -->
+                    <a class="nav-link" href="#">Catalog <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Cart/Index">Shopping Cart</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Enter
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Sign in</a>
+                        <a class="dropdown-item" href="#">Sign up</a>
+                        <div class="dropdown-divider"></div>
+                        <small><a class="dropdown-item" href="#">Continue as a guest</a></small>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    @foreach (ViewProductAsNormalno item in ViewBag.products)
+    {
+<div class="list-group">
+
+    <a href="#" class="list-group-item list-group-item-action">
+        <div class="list text">
+            <div>
+                <h5>Category: @item.Category</h5>
+                <h5>Name: @item.Name</h5>
+                <h5>Price: @item.Price</h5>
+            </div>
+            <p class="mb-1">@item.Description</p>
+        </div>
+    </a>
+    
+    
+    <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("Buy", "Cart", new { id = item.IdProduct })'">Buy now! </button>
+    <div class="info"></div>
+</div>
+    }
+
+</body>
+
+</html>

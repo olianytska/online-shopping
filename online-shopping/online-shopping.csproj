@@ -123,6 +123,7 @@
     <Content Include="Content\bootstrap-utilities.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -144,6 +145,12 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -221,7 +228,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShippingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +242,7 @@
     <Compile Include="Models\ContactU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -249,6 +261,7 @@
     <Compile Include="Models\Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderClient.cs" />
     <Compile Include="Models\Order_Status.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -267,6 +280,7 @@
     <Compile Include="Models\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ProductModel.cs" />
     <Compile Include="Models\Product_Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -276,6 +290,7 @@
     <Compile Include="Models\Storage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewProductAsNormalno.cs" />
     <Compile Include="Models\Worker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -322,6 +337,15 @@
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Default\Catalog.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Shipping\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
